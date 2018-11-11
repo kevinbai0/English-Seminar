@@ -4,7 +4,7 @@ const config = {
     entry: "./src/index.js",
     output: {
         filename: "bundle.js",
-        path: path.join(__dirname, "doc")
+        path: path.join(__dirname, "docs")
     },
     module:{
         rules:[
