@@ -28,7 +28,7 @@ const config = {
         new HWP(
             {template: path.join(__dirname,"/public/index.html")}
         ),
-        new CopyWebpackPlugin([{from: "public/fonts", to: "fonts"} ])
+        new CopyWebpackPlugin([{from: "public/fonts", to: "public/fonts"} ])
     ],
     watch: true
 }
