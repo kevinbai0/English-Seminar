@@ -1,5 +1,6 @@
 const path = require("path");
 const HWP = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const config = {
     entry: "./src/index.js",
     output: {
@@ -26,7 +27,8 @@ const config = {
     plugins:[
         new HWP(
             {template: path.join(__dirname,"/public/index.html")}
-        )
+        ),
+        new CopyWebpackPlugin([{from: "public/fonts", to: "fonts"} ])
     ],
     watch: true
 }
