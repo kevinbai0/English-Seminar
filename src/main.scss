@@ -1,0 +1,81 @@
+@import "./definitions.scss";
+
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 900;
+    src: url("/public/fonts/SF-Pro-Display-Black.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 800;
+    src: url("/public/fonts/SF-Pro-Display-Heavy.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 700;
+    src: url("/public/fonts/SF-Pro-Display-Bold.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 600;
+    src: url("/public/fonts/SF-Pro-Display-SemiBold.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 500;
+    src: url("/public/fonts/SF-Pro-Display-Medium.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 400;
+    src: url("/public/fonts/SF-Pro-Display-Regular.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 300;
+    src: url("/public/fonts/SF-Pro-Display-Light.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 200;
+    src: url("/public/fonts/SF-Pro-Display-UltraLight.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 400;
+    font-style: italic;
+    src: url("/public/fonts/SF-Pro-Display-RegularItalic.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Display';
+    font-weight: 300;
+    font-style: italic;
+    src: url("/public/fonts/SF-Pro-Display-LightItalic.otf"),
+}
+
+@font-face {
+    font-family: 'SF-Pro-Text';
+    font-weight: 400;
+    src: url("/public/fonts/SF-Pro-Text-Regular.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Text';
+    font-weight: 300;
+    src: url("/public/fonts/SF-Pro-Text-Light.otf"),
+}
+@font-face {
+    font-family: 'SF-Pro-Text';
+    font-weight: 300;
+    font-style: italic;
+    src: url("/public/fonts/SF-Pro-Text-LightItalic.otf"),
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: $bodyFont, "sans-serif";
+    font-weight: 400;
+    overflow: hidden;
+}
