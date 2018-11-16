@@ -8,12 +8,15 @@ class App extends React.Component {
         super(props);
         this.state = {
             currentProng: null,
-            firstUpdate: true
+            firstUpdate: true,
+            scrollState: "noscroll"
         }
+    }
+    componentDidMount() {
+        window.scroll({top: 0});
     }
     componentDidUpdate() {
         if (this.state.currentProng === "Commentator" && this.state.firstUpdate) {
-            console.log("SCroll");
             window.scroll({top: window.innerHeight, behavior: "smooth"});
         }
     }
@@ -21,12 +24,21 @@ class App extends React.Component {
         let currentElement = null;
         if (this.state.currentProng === "Commentator") currentElement = <CommentatorPage />
         return  <div>
-            <LandingPage />
-            <ThesisPage onChooseProng={(prong) => this.onChooseProng(prong)} currentProng={this.state.currentProng}/>
+            <LandingPage updateScrollState={(value) => this.updateScrollState(value)}/>
+            <ThesisPage 
+                onChooseProng={(prong) => this.onChooseProng(prong)} 
+                currentProng={this.state.currentProng} 
+                scrollState={this.state.scrollState} 
+            />
             {this.state.currentProng ? currentElement : ""}
         </div>
     }
-        
+    updateScrollState = (value) => {
+        if (this.state.scrollState === value) return;
+        this.setState({
+            scrollState: value
+        })
+    }
     
     onChooseProng = (prong) => {
         this.setState({

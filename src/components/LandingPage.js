@@ -7,7 +7,6 @@ class LandingPage extends React.Component {
         this.state = {
             startingPresentation: false,
             presentationStarted: false,
-            scrolled: false
         }
         this.playRef=React.createRef();
         this.subtitleRef = React.createRef();
@@ -98,9 +97,10 @@ class LandingPage extends React.Component {
         else {
             // scroll down
             window.scrollTo({top: this.state.scrolled ? 0 : window.innerHeight, behavior: "smooth"});
-            this.setState({
-                scrolled: !this.state.scrolled
-            })
+            this.props.updateScrollState("scrolling");
+            setTimeout(() => {
+                this.props.updateScrollState("scrolled");
+            }, 500);
         }
     }
 }

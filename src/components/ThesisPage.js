@@ -1,7 +1,10 @@
 import React from "react";
 import "../stylesheets/thesisStyle.scss";
+import "../stylesheets/commentatorSplashPage.scss";
 import anime from "animejs";
 import { Transition } from "react-transition-group";
+
+import CommentatorSplashPage from "./CommentatorSplashPage";
 
 class ThesisPage extends React.Component {
     constructor(props) {
@@ -12,7 +15,7 @@ class ThesisPage extends React.Component {
         this.mediatorProngRef = React.createRef();
         this.prongsContainerRef = React.createRef();
     }
-    componentDidUpdate() {
+    async componentDidUpdate() {
         if (this.props.currentProng) {
             // get deltaX for left to middle
             let dXLeft = this.mediatorProngRef.current.offsetLeft - this.consulterProngRef.current.offsetLeft;
@@ -98,12 +101,59 @@ class ThesisPage extends React.Component {
                 }
             })
         }
+        else if (this.props.scrollState === "scrolling") {
+            let timeline = anime.timeline();
+            let commentatorRightOffset = window.innerWidth - this.commentatorProngRef.current.offsetLeft + 20;
+            let consulterLeftOffset = this.consulterProngRef.current.offsetLeft + this.consulterProngRef.current.offsetWidth + 20;
+            anime({
+                targets: this.captionRef.current,
+                opacity: 0,
+                duration: 0
+            })
+            anime({
+                targets: this.commentatorProngRef.current,
+                translateX: [0, commentatorRightOffset],
+                translateY: [0, -200],
+                duration: 0,
+            })
+            anime({
+                targets: this.mediatorProngRef.current,
+                opacity: 0,
+                duration: 0,
+            })
+            anime({
+                targets: this.consulterProngRef.current,
+                translateX: [0, -consulterLeftOffset],
+                translateY: [0, 200],
+                duration: 0
+            })
+        }
+        else if (this.props.scrollState === "scrolled") {
+            let result = await this.animateCaptionText();
+            anime({
+                targets: this.commentatorProngRef.current,
+                translateX: 0,
+                translateY: 0,
+                duration: 1000,
+            })
+            anime({
+                targets: this.mediatorProngRef.current,
+                opacity: 1,
+                duration: 1000,
+            })
+            anime({
+                targets: this.consulterProngRef.current,
+                translateX: 0,
+                translateY: 0,
+                duration: 1000
+            })
+        }
     }
     render = () => {
         return <div className="thesis-component" style={{
             height: this.props.currentProng ? "100vh" : "auto"
         }}>
-            <div className="caption" ref={this.captionRef}><span className="emphasis">Both</span> characters provide the same function in <span className="emphasis">both</span> plays.</div>
+            <div className="caption" ref={this.captionRef}><span className="emphasis">Both</span><span> characters provide the same function in </span><span className="emphasis">both</span><span> plays.</span></div>
             <div className="prongs-container" ref={this.prongsContainerRef}>
                 <div className="prong" ref={this.consulterProngRef} onClick={() => this.prongChosen("Consulter")}>The <span className="emphasis">Consulter</span></div>
                 <div className="prong" ref={this.mediatorProngRef} onClick={() => this.prongChosen("Mediator")}>The <span className="emphasis">Mediator</span></div>
@@ -111,41 +161,38 @@ class ThesisPage extends React.Component {
             </div>
             <Transition in={this.props.currentProng === "Commentator"} timeout={4000}>
                 {(state) => {
-                    console.log(state);
                     return <CommentatorSplashPage state={state}/>
                 }}
             </Transition>
 
         </div>
     }
+
+    async animateCaptionText() {
+        let caption = this.captionRef.current;
+        caption.style.opacity = 1;
+        let elements = caption.getElementsByTagName("span");
+        let timeCounter = 0;
+        let allPromises = [];
+        for (let e = 0; e < elements.length; e++) {
+            let elementText = elements[e].innerHTML;
+            elements[e].innerHTML = "";
+            for (let i = 0; i < elementText.length ;i++) {
+                let localCounter = timeCounter++;
+                let promise = new Promise((res, rej) => setTimeout(() => {
+                    elements[e].innerHTML += elementText[i];
+                    res("Good");
+                }, localCounter * 100));
+                allPromises.push(promise);
+            }
+        }
+        await Promise.all(allPromises);
+        return true;
+    }
+
     prongChosen(prong) {
         this.props.onChooseProng(prong);
     }
-}
-
-const CommentatorSplashPage = ({state}) => {
-    let classNameExtension = ""
-    if (state === "exited") {
-        classNameExtension = " hidden"
-    }
-    else if (state === "entering") {
-        classNameExtension = " entering"
-    }
-    else if (state === "entered") {
-        classNameExtension=" entering entered";
-    }
-    return <div className="commentator-splash-page">
-        {console.log(state)}
-        <div className={"comic-relief" + classNameExtension}>Comic Relief</div>
-        <div className={"humor" + classNameExtension}>Humor</div>
-        <div className={"always-something-say" + classNameExtension}>Always has something to say</div>
-        <div className={"voices-opinion" + classNameExtension}>Voices opinion no matter what</div>
-        <div className={"peanut-gallery" + classNameExtension}>The Peanut Gallery</div>
-        <div className={"usually-contradicts" + classNameExtension}>Usually contradicts the authority</div>
-        <div className={"never-ending-commentary" + classNameExtension}>Never ending commentary</div>
-        <div className={"no-authority" + classNameExtension}>No Authority</div>
-        <div className={"often-unheard" + classNameExtension}>Often go unheard</div>
-    </div>
 }
 
 export default ThesisPage;
