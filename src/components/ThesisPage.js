@@ -14,21 +14,53 @@ class ThesisPage extends React.Component {
         this.commentatorProngRef = React.createRef();
         this.mediatorProngRef = React.createRef();
         this.prongsContainerRef = React.createRef();
+        this.commentatorSplashRef = React.createRef();
+        this.state = {
+            shouldSwitchPage: false
+        }
     }
     async componentDidUpdate() {
+        let prongTarget;
+        let sideTargets = [];
+        if (this.props.currentProng === "Commentator") {
+            this.commentatorProngRef.current.style.zIndex=100;
+            this.mediatorProngRef.current.style.zIndex=99;
+            this.consulterProngRef.current.style.zIndex=98;
+            prongTarget = this.commentatorProngRef.current;
+            sideTargets = [this.consulterProngRef.current, this.mediatorProngRef.current];
+        }
+
+        if (this.state.shouldSwitchPage) {
+            let timeline = anime.timeline();
+            timeline.add({
+                targets: this.commentatorSplashRef.current,
+                translateX: -window.innerWidth,
+                duration: 5000,
+                easing: "easeInQuad",
+                delay: 100
+            }).add({
+                targets: this.commentatorSplashRef.current,
+                opacity: [1,0],
+                duration: 2000,
+                easing: "easeInQuad",
+                offset: "-=2000",
+            })
+            anime({
+                targets: prongTarget,
+                opacity: [1,0],
+                duration: 0,
+            })
+
+            timeline.finished.then(this.props.thesisTransition);
+            
+            return;
+        }
+        console.log("current prong");
         if (this.props.currentProng) {
             // get deltaX for left to middle
             let dXLeft = this.mediatorProngRef.current.offsetLeft - this.consulterProngRef.current.offsetLeft;
             let dXRight = this.mediatorProngRef.current.offsetLeft - this.commentatorProngRef.current.offsetLeft;
-            let prongTarget;
-            let sideTargets = [];
-            if (this.props.currentProng === "Commentator") {
-                this.commentatorProngRef.current.style.zIndex=100;
-                this.mediatorProngRef.current.style.zIndex=99;
-                this.consulterProngRef.current.style.zIndex=98;
-                prongTarget = this.commentatorProngRef.current;
-                sideTargets = [this.consulterProngRef.current, this.mediatorProngRef.current];
-            }
+            
             let timeline = anime.timeline();
             timeline.add({
                 targets: this.captionRef.current,
@@ -102,7 +134,6 @@ class ThesisPage extends React.Component {
             })
         }
         else if (this.props.scrollState === "scrolling") {
-            let timeline = anime.timeline();
             let commentatorRightOffset = window.innerWidth - this.commentatorProngRef.current.offsetLeft + 20;
             let consulterLeftOffset = this.consulterProngRef.current.offsetLeft + this.consulterProngRef.current.offsetWidth + 20;
             anime({
@@ -148,6 +179,7 @@ class ThesisPage extends React.Component {
                 duration: 1000
             })
         }
+        
     }
     render = () => {
         return <div className="thesis-component" style={{
@@ -161,7 +193,11 @@ class ThesisPage extends React.Component {
             </div>
             <Transition in={this.props.currentProng === "Commentator"} timeout={4000}>
                 {(state) => {
-                    return <CommentatorSplashPage state={state}/>
+                    return <CommentatorSplashPage 
+                        state={state} 
+                        animationsFinished={this.animationsFinished.bind(this)} 
+                        reference={this.commentatorSplashRef}
+                    />
                 }}
             </Transition>
 
@@ -188,6 +224,12 @@ class ThesisPage extends React.Component {
         }
         await Promise.all(allPromises);
         return true;
+    }
+
+    animationsFinished() {
+        this.setState({
+            shouldSwitchPage: true
+        })
     }
 
     prongChosen(prong) {

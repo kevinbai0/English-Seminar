@@ -17,6 +17,17 @@
     .entering.entered {
         opacity: 1;
     }
+    .commentator {
+        position: absolute;
+        left: 9.74vw;
+        top: 1.1vw;
+        font-size: 6.38vw;
+        font-weight: 400;
+        color: #FD6B6B;
+        .emphasis {
+            font-weight: 600;
+        }
+    }
     .comic-relief {
         position: absolute;
         left: -15.5vw;
