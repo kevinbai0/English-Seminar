@@ -1,8 +1,9 @@
 const path = require("path");
 const HWP = require("html-webpack-plugin");
+require("@babel/polyfill");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const config = {
-    entry: "./src/index.js",
+    entry: ["@babel/polyfill", "./src/index.js"],
     output: {
         filename: "bundle.js",
         path: path.join(__dirname, "docs")
