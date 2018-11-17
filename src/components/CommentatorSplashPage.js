@@ -34,8 +34,7 @@ class CommentatorSplashPage extends React.Component {
                 translateX: [-window.innerWidth / 2, 0],
                 opacity: [0, 1],
                 easing: "easeInOutQuad",
-                //offset: 500,
-                offset: 0,
+                offset: 500,
                 duration: 3000
             }).add({
                 targets: this.comicReliefRef.current,
@@ -44,7 +43,7 @@ class CommentatorSplashPage extends React.Component {
                 rotate: [90, 90],
                 easing: "easeInOutQuad",
                 offset: "-=1000",
-                offset: 0
+                
             }).add({
                 targets: this.humorRef.current,
                 translateX: [window.innerWidth, 0],
@@ -52,21 +51,21 @@ class CommentatorSplashPage extends React.Component {
                 duration: 3500,
                 easing: "easeInOutQuad",
                 offset: "-=1000",
-                offset: 0
+                
             }).add({
                 targets: this.commentaryRef.current,
                 translateX: [-2 * window.innerWidth, 0],
                 duration: 7000,
                 offset: "-=1500",
                 easing: "easeInQuad",
-                offset: 0
+                
             }).add({
                 targets: this.contradictsRef.current,
                 translateX: [1000, 0],
                 duration: 5000,
                 offset: "-=500",
                 easing: "easeOutQuad",
-                offset: 0
+                
             }).add({
                 targets: this.noAuthorityRef.current,
                 translateY: [-500, 0],
@@ -74,7 +73,7 @@ class CommentatorSplashPage extends React.Component {
                 duration: 5000,
                 easing: "easeOutQuad",
                 offset: "-=500",
-                offset: 0
+                
             }).add({
                 targets: this.unheardRef.current,
                 translateX: [500, 0],
@@ -82,7 +81,7 @@ class CommentatorSplashPage extends React.Component {
                 easing: "easeInCubic",
                 duration: 3000,
                 offset: "-=500",
-                offset: 0
+                
             }).add({
                 targets: this.voicesOpinionRef.current,
                 translateY: [500, 0],
@@ -90,7 +89,7 @@ class CommentatorSplashPage extends React.Component {
                 easing: "easeInOutQuad",
                 duration: 5000,
                 offset: "-=500",
-                offset: 0
+                
             }).add({
                 targets: this.peanutRef.current,
                 translateX: [-500, 0],
@@ -98,7 +97,6 @@ class CommentatorSplashPage extends React.Component {
                 duration: 6000,
                 offset: "-=2000",
                 easing: "easeInOutQuad",
-                offset: 0
             })
 
             timeline.finished.then(() => {

@@ -3,6 +3,8 @@ import LandingPage from "./components/LandingPage";
 import ThesisPage from "./components/ThesisPage";
 import CommentatorPage from "./components/CommentatorPage";
 import ScrollWrapper from "./components/ScrollWrapper";
+import EvidencePage from "./components/EvidencePage";
+import {Transition} from "react-transition-group";
 
 class App extends React.Component { 
     constructor(props) {
@@ -10,7 +12,8 @@ class App extends React.Component {
         this.state = {
             currentProng: null,
             firstUpdate: true,
-            scrollState: "noscroll"
+            scrollState: "noscroll",
+            showingEvidence: false
         }
     }
     componentDidUpdate() {
@@ -33,6 +36,10 @@ class App extends React.Component {
                 thesisTransition={this.thesisTransition.bind(this)}
             />
             {this.state.currentProng ? currentElement : ""}
+
+            <Transition in={this.state.showingEvidence} timeout={4000}>
+                {   (state) =>  <EvidencePage state={state}/> }
+            </Transition>
         </ScrollWrapper>
     }
     prevScrollPos = 0;
@@ -75,7 +82,9 @@ class App extends React.Component {
     }
 
     thesisTransition() {
-        console.log("Transition time");
+        this.setState({
+            showingEvidence: true
+        })
     }
     
     onChooseProng = (prong) => {
