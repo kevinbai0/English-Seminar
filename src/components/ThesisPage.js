@@ -55,7 +55,6 @@ class ThesisPage extends React.Component {
             
             return;
         }
-        console.log("current prong");
         if (this.props.currentProng) {
             // get deltaX for left to middle
             let dXLeft = this.mediatorProngRef.current.offsetLeft - this.consulterProngRef.current.offsetLeft;
@@ -205,13 +204,14 @@ class ThesisPage extends React.Component {
     }
 
     async animateCaptionText() {
+        let texts = ["Both", " characters provide the same role in ", "both", " plays."];
         let caption = this.captionRef.current;
         caption.style.opacity = 1;
         let elements = caption.getElementsByTagName("span");
         let timeCounter = 0;
         let allPromises = [];
         for (let e = 0; e < elements.length; e++) {
-            let elementText = elements[e].innerHTML;
+            let elementText = texts[e];
             elements[e].innerHTML = "";
             for (let i = 0; i < elementText.length ;i++) {
                 let localCounter = timeCounter++;
