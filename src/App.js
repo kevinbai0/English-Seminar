@@ -1,101 +1,28 @@
-import React from "react";
-import LandingPage from "./components/LandingPage";
-import ThesisPage from "./components/ThesisPage";
-import CommentatorPage from "./components/CommentatorPage";
-import ScrollWrapper from "./components/ScrollWrapper";
-import EvidencePage from "./components/EvidencePage";
-import {Transition} from "react-transition-group";
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-class App extends React.Component { 
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentProng: null,
-            firstUpdate: true,
-            scrollState: "noscroll",
-            showingEvidence: false
-        }
-    }
-    componentDidUpdate() {
-        if (this.state.currentProng === "Commentator" && this.state.firstUpdate) {
-            window.scroll({top: window.innerHeight, behavior: "smooth"});
-        }
-    }
-    render = () => {
-        let currentElement = null;
-        if (this.state.currentProng === "Commentator") currentElement = <CommentatorPage />
-        return  <ScrollWrapper handleScroll={this.handleScroll.bind(this)}>
-            <LandingPage
-                updateScrollState={(value) => this.updateScrollState(value)}
-                beganScrolling={this.state.scrollState !== "noscroll"}
-            />
-            <ThesisPage 
-                onChooseProng={(prong) => this.onChooseProng(prong)} 
-                currentProng={this.state.currentProng} 
-                scrollState={this.state.scrollState} 
-                thesisTransition={this.thesisTransition.bind(this)}
-            />
-            {this.state.currentProng ? currentElement : ""}
-
-            <Transition in={this.state.showingEvidence} timeout={4000}>
-                {   (state) =>  <EvidencePage state={state}/> }
-            </Transition>
-        </ScrollWrapper>
-    }
-    prevScrollPos = 0;
-    handleScroll(event) {
-        // scrolling down
-        if (this.prevScrollPos < window.pageYOffset) {
-            if (this.state.scrollState === "noscroll") {
-                this.setState({
-                    scrollState: "scrolling"
-                })
-            }
-            else if (this.state.scrollState === "scrolling" && window.pageYOffset >= window.innerHeight * 2 / 3) {
-                this.setState({
-                    scrollState: "scrolled"
-                })
-            }
-        }
-        // scrolling up
-        else {
-            if (this.state.scrollState === "scrolled" && window.pageYOffset <= 10) {
-                this.setState({
-                    scrollState: "scrolling"
-                })
-            }
-            else if (this.state.scrollState === "scrolling" && window.pageYOffset <= 5) {
-                this.setState({
-                    scrollState: "noscroll"
-                })
-            }
-        }
-        
-
-        this.prevScrollPos = window.pageYOffset;
-    }
-    updateScrollState = (value) => {
-        if (this.state.scrollState === value) return;
-        this.setState({
-            scrollState: value
-        })
-    }
-
-    thesisTransition() {
-        this.setState({
-            showingEvidence: true
-        })
-    }
-    
-    onChooseProng = (prong) => {
-        this.setState({
-            currentProng: prong
-        }, () => {
-            this.setState({
-                firstUpdate: false
-            })
-        })
-    }
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
