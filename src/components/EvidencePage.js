@@ -63,6 +63,8 @@ class EvidencePage extends React.Component {
             </div>
             {
                 subprongs.map((subprong, i) => {
+                    let multiLearLength = subprong.quoteLearMultiple && subprong.quoteLearMultiple.length;
+                    let numRowsLear = multiLearLength && multiLearLength > 5 ? (Math.ceil(multiLearLength / 2)) : multiLearLength;
                     return <div key={i}>
                         <div className="subprong-container evidence-container" ref={this.pageRefs[i * 3 + 1]}>
                             <div className="subprong-title">{subprong.title}</div>
@@ -73,7 +75,21 @@ class EvidencePage extends React.Component {
                             <div className="quote-lines">
                             <div className="inline-quote">
                                     <div className="rectangle"></div>
-                                    <div className="quote-content">{subprong.quoteOedipus}</div>
+                                    {
+                                        subprong.quoteOedipus ? <div className="quote-content">{subprong.quoteOedipus}</div> :
+                                            <div className="multi-quote-content" style={{
+                                                gridTemplateRows: "repeat(" + subprong.quoteOedipusMultiple.length + ", 1fr)",
+                                                gridTemplateColumns: "1fr",
+                                            }}>
+                                                {
+                                                    subprong.quoteOedipusMultiple.map((text, i) => {
+                                                        let val = i+1;
+                                                        let str = val < 10 ? "0" + val : "" + val;
+                                                        return <div key={i} className="q">{str} {text}</div>
+                                                    })
+                                                }
+                                            </div>
+                                    }
                                 </div>
                                 <div className="quote-author">{subprong.quoteOedipusAuthor}</div>
                             </div>
@@ -84,7 +100,21 @@ class EvidencePage extends React.Component {
                             <div className="quote-lines">
                                 <div className="inline-quote">
                                     <div className="rectangle"></div>
-                                    <div className="quote-content">{subprong.quoteLear}</div>
+                                    {
+                                        subprong.quoteLear ? <div className="quote-content">{subprong.quoteLear}</div> :
+                                            <div className="multi-quote-content" style={{
+                                                gridTemplateRows: "repeat(" + numRowsLear + ", 1fr)",
+                                                gridTemplateColumns: numRowsLear === multiLearLength ? "1fr" : "1fr 1fr",
+                                            }}>
+                                                {
+                                                    subprong.quoteLearMultiple.map((text, i) => {
+                                                        let val = i+1;
+                                                        let str = val < 10 ? "0" + val : "" + val;
+                                                        return <div key={i} className="q">{str} {text}</div>
+                                                    })
+                                                }
+                                            </div>
+                                    }
                                 </div>
                                 <div className="quote-author">{subprong.quoteLearAuthor}</div>
                             </div>

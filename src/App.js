@@ -25,7 +25,7 @@ class App extends React.Component {
         let currentElement = null;
         return  <Router>
             <div>
-                <Route exact path="/" component={
+                <Route exact path="/seminar" component={
                     () => 
                         <div>
                             <LandingPage
@@ -72,7 +72,7 @@ class App extends React.Component {
     }
 
     navItems = [
-		{name: "Home", link: "/"}, 
+		{name: "Home", link: "/seminar"}, 
 		{name: "The Consulters", link: "/seminar/consulters"}, 
 		{name: "The Mediators", link: "/seminar/mediators"}, 
 		{name: "The Commentators", link: "/seminar/commentators"},

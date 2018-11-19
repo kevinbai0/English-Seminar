@@ -49,7 +49,7 @@
         align-items: center;
         text-align: center;
         .subprong-title {
-            font-size: 10vw;
+            font-size: 9vw;
             font-weight: 900;
         }
     }
@@ -59,7 +59,7 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            top: 5vw;
+            top: 3vw;
             font-family: "Nunito";
             font-weight: 900;
             font-size: 20vw;
@@ -68,12 +68,12 @@
         .quote-lines {
             position: absolute;
             left: 50%;
-            top: 50%;
+            top: 55%;
             transform: translate(-50%, -50%);
             width: 80%;
             .inline-quote {
                 display: flex;
-                width: 80%;
+                width: 100%;
                 .rectangle {
                     margin: 0 2vw 0 0;
                     background-color: #333333;
@@ -84,6 +84,16 @@
                     font-size: 3vw;
                     font-weight: 300;
                     font-style: italic;
+                    width: 100%;
+                }
+                .multi-quote-content {
+                    width: 100%;
+                    font-size: 2vw;
+                    font-weight: 300;
+                    font-style: italic;
+                    display: grid;
+                    grid-auto-flow: column;
+                    grid-template-columns: 1fr 1fr;
                 }
             }
             .quote-author {
@@ -98,8 +108,10 @@
         background: linear-gradient(135deg, #84FAB0, #8FD3F4);
     }
     .quote-container.red {
-        .rectangle {
-            background-color: white;
+        .inline-quote {
+            .rectangle {
+                background-color: white;
+            }
         }
         background: linear-gradient(135deg, #FC6076, #FF9A44);
         color: white;

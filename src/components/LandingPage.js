@@ -4,19 +4,20 @@ import ScrollButton from "./ScrollButton";
 import ThesisPage from "./ThesisPage";
 import Water from "../water";
 import { Transition } from "react-transition-group";
+import VideoModal from "./VideoModal";
 
 class LandingPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             presentationStarted: false,
-            scrollState: "noscroll"
+            scrollState: "noscroll",
+            shouldPlayMusic: false
         }
         this.water = new Water();
         this.water.onScroll = this.handleScroll.bind(this);
         this.titleRef = React.createRef();
         this.subtitleRef = React.createRef();
-
         this.water.add({
             target: this.titleRef,
             keyframes: {
@@ -39,11 +40,11 @@ class LandingPage extends React.Component {
     }
 
     render() {
-        let started = this.state.presentationStarted;
         return <div className="landing-page">
             { this.props.navigationBar }
             <div className="title" ref={this.titleRef}>The Chorus and the Fool</div> 
             <div className="sub-title" ref={this.subtitleRef}>In Oedipus the King and King Lear</div>
+            <VideoModal onClick={this.startMusic.bind(this)} shouldShow={this.state.shouldPlayMusic} stopMusic={() => this.stopMusic()} src="/song.m4v" type="/video/mp4" />
             
             <Transition in={this.state.scrollState === "noscroll"} timeout={1000}>
                 {(state) =>  <div className={"start-button " + state} onClick={this.startPresentation.bind(this)}>Start Presentation</div>}
@@ -58,6 +59,21 @@ class LandingPage extends React.Component {
                 scrollState={this.state.scrollState} 
             />
         </div>
+    }
+
+    startMusic() {
+        if (!this.state.shouldPlayMusic) {
+            this.setState({
+                shouldPlayMusic: true
+            })
+        }
+    }
+    stopMusic() {
+        if (this.state.shouldPlayMusic) {
+            this.setState({
+                shouldPlayMusic: false
+            })
+        }
     }
 
     prevScrollPos = 0;

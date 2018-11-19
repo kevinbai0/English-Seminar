@@ -4,6 +4,14 @@
     width: 100vw;
     height: 160vh;
     background-image: linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);
+    .video {
+        transition: all 0.5s ease;
+        width: 100vw;
+    }
+    .video.exiting,.video.video.exited {
+        opacity: 0;
+        visibility: hidden
+    }
     .title, .sub-title {
         position: absolute;
         font-weight: 900;

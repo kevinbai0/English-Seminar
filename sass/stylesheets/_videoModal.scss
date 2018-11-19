@@ -1,0 +1,81 @@
+@import "../definitions.scss";
+
+.video-modal {
+    position: fixed;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vw;
+    background-color: black;
+    z-index: 1000;
+
+    .video.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+.video-modal.small {
+    transform: scale(0.1) translate(500vw, -500vh);
+    border-radius: 50vw;
+    background-color: #333333;
+    cursor: pointer;
+}
+
+.x-button {
+    color: white;
+    position: absolute;
+    left: 5vw;
+    top: 5vw;
+    font-size: 5vw;
+    font-weight: 900;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+.x-button:hover {
+    opacity: 0.6;
+}
+
+@keyframes move {
+    100% {
+      transform: translate3d(0, 0, -1000px);
+    }
+  }
+  .container {
+    transition: all 0.5s ease;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    transform-style: preserve-3d;
+  }
+  .container.hidden {
+      opacity: 0;
+  }
+  .bubble-wrap {
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    perspective: 600px;
+  }
+  .bubble {
+    position: absolute;
+    opacity: .7;
+    border-radius: 50%;
+    animation: move 3s infinite;
+    
+  }
+  
+  @for $i from 1 through 100 {
+    .bubble:nth-child(#{$i}){
+       $size: random(30)+px;
+       height: $size;
+       width: $size;
+       animation-delay: -$i * .2s;
+       transform: translate3d( (random(1000) * 1px),  (random(1000) * 1px), (random(2000) * 1px));
+       background: hsl( random(360) , 70%, 50%);
+    }
+   
+  }
+  
