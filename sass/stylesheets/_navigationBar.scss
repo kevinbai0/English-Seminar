@@ -21,10 +21,10 @@ nav {
 		display: inline-flex;
 		flex-direction: row;
 		width: 80%;
+		margin: 0 10%;
 		align-items: center;
-		justify-content: flex-end;
+		justify-content: space-evenly;
 		.nav-item {
-			margin-left: 8vw;
 			a {
 				color: inherit;
 				text-decoration: inherit;
@@ -39,10 +39,10 @@ nav {
 			opacity: 0.5;
 		}
 		.nav-item.selected {
-			color: rgba(0,0,0, 0.5);
+			color: #38D5D5;
 		}
 		.nav-item.selected.dark {
-			opacity: 0.7
+			color: #38D5D5;
 		}
 		.nav-item.dark {
 			color: black;

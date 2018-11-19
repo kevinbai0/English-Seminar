@@ -72,7 +72,6 @@ class HamburgerNavigation extends Component {
 		let menuClass = this.state.hamburgerState === this.default ? "" : "open";
 
 		this.last = this.state.hamburgerState;
-		let menuItemClass = this.state.hamburgerState === this.default ? "" : "animate";
 		return (
 			<div className="mobile-nav-container">
 				<div id="nav-icon" className={menuClass} onClick={this.toggleHamburger}>

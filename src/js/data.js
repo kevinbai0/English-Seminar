@@ -103,8 +103,8 @@ let data = {
     "Commentator": [
         {
             title: "The Peanut Gallery",
-            quoteOedipus: "Quote here",
-            quoteOedipusAuthor: "(Sophocles #)",
+            quoteOedipus: "Do you see to what you have come, for all your honest purpose, in seeking to slack and blunt my zeal?",
+            quoteOedipusAuthor: "(Sophocles 99).",
             quoteLear: "Lear quote",
             quoteLearAuthor: "(Act.Scene.Lines)"
         },

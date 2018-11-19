@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Water from "./water";
 import MediatorPage from "./components/MediatorPage";
 import ConsulterPage from "./components/ConsulterPage";
+import WorksCited from "./components/WorksCited";
 
 class App extends React.Component { 
     constructor(props) {
@@ -22,7 +23,6 @@ class App extends React.Component {
         }
     }
     render = () => {
-        let currentElement = null;
         return  <Router>
             <div>
                 <Route exact path="/" component={
@@ -45,8 +45,11 @@ class App extends React.Component {
                 }/>
                 <Route exact path="/consulters" component={
                     () => 
-                        <ConsulterPage navigationBar={this.getNavBar(2, false)} />   
+                        <ConsulterPage navigationBar={this.getNavBar(1, false)} />   
                 }/>
+                <Route exact path="/citations" component={
+                    () => <WorksCited navigationBar={this.getNavBar(4, false)}/>
+                } />
             </div>
             {/*
                 <ScrollWrapper handleScroll={this.handleScroll.bind(this)}>
@@ -73,9 +76,10 @@ class App extends React.Component {
 
     navItems = [
 		{name: "Home", link: "/"}, 
-		{name: "The Consulters", link: "/consulters"}, 
-		{name: "The Mediators", link: "/mediators"}, 
-		{name: "The Commentators", link: "/commentators"},
+		{name: "Consulters", link: "/consulters"}, 
+		{name: "Mediators", link: "/mediators"}, 
+        {name: "Commentators", link: "/commentators"},
+        {name: "Works Cited", link: "/citations"}
 	]
 	getNavBar = (i, light) => {
 		return <NavigationBar
