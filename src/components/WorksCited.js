@@ -8,7 +8,7 @@ const WorksCited = ({navigationBar}) =>
             <div className="citation">
                 Shakespeare, William. <span className="it">King Lear</span>, Edited by Eric A. McCann, Canadian School Book Exchange, 1996.
             </div>
-            <div className="citation">Sophocles. <span className="it">The Complete Plays of Sophocles</span>, “Oedipus the King,” Edited and with an Introduction by Moses Hadas, 3rd ed.,  Bantam Dell, 2006.
+            <div className="citation">Sophocles. <span className="it">The Complete Plays of Sophocles</span>, “Oedipus the King,” Edited and with an Introduction by Moses Hadas, 3rd ed.,  Bantam Dell, 2006, pp. 79-120.
 </div>
         </div>
     </div>

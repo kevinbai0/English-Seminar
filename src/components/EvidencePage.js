@@ -104,7 +104,7 @@ class EvidencePage extends React.Component {
                                         subprong.quoteLear ? <div className="quote-content">{subprong.quoteLear}</div> :
                                             <div className="multi-quote-content" style={{
                                                 gridTemplateRows: "repeat(" + numRowsLear + ", 1fr)",
-                                                gridTemplateColumns: numRowsLear === multiLearLength ? "1fr" : "1fr 1fr",
+                                                gridTemplateColumns: numRowsLear === multiLearLength ? "1fr" : "auto auto",
                                             }}>
                                                 {
                                                     subprong.quoteLearMultiple.map((text, i) => {

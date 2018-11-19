@@ -105,22 +105,46 @@ let data = {
             title: "The Peanut Gallery",
             quoteOedipus: "Do you see to what you have come, for all your honest purpose, in seeking to slack and blunt my zeal?",
             quoteOedipusAuthor: "(Sophocles 99).",
-            quoteLear: "Lear quote",
-            quoteLearAuthor: "(Act.Scene.Lines)"
+            quoteLear: "",
+            quoteLearMultiple: [
+                "Yes, forsooth, I will hold my",
+                "tongue. So your face bids me, though you say nothing.",
+                "Mum, mum!",
+                "He that keeps nor crust nor crum,",
+                "Weary of all, shall want some.-",
+                "That's a shealed peascod."
+            ],
+            quoteLearAuthor: "(1.4.191-196)"
         },
         {
-            title: "Subprong 2",
-            quoteOedipus: "Quote here",
-            quoteOedipusAuthor: "(Sophocles #)",
-            quoteLear: "Lear quote",
-            quoteLearAuthor: "(Act.Scene.Lines)"
+            title: "Provide Relief",
+            quoteOedipus: "But now whose story is more grievous in men's ears? Who is a more wretched captive to fierce plagues and troubles, with all his life reversed?",
+            quoteOedipusAuthor: "(Sophocles 112).",
+            quoteLear: "If thou wert my fool, nuncle, I’d have thee beaten for being old before thy time",
+            quoteLearAuthor: "(1.5.38-39)"
         },
         {
-            title: "Subprong 3",
-            quoteOedipus: "Quote here",
-            quoteOedipusAuthor: "(Sophocles #)",
-            quoteLear: "Lear quote",
-            quoteLearAuthor: "(Act.Scene.Lines)"
+            title: "Engage the Audience",
+            quoteOedipus: "",
+            quoteOedipusMultiple: [
+                "that mortal seer wins knowl-",
+                "edge above mine, of this there can be no sure test; though",
+                "man may surpass man in lore. Yet, until I see the word made",
+                "good, never will I assent when men blame Oedipus."
+            ],
+            quoteOedipusAuthor: "(Sophocles 94)",
+            quoteLear: "",
+            quoteLearMultiple: [
+                "That lord that counseled thee",
+                "To give away thy land,",
+                "Come place him here by me-",
+                "Do thou for him stand.",
+                "The sweet and bitter fool",
+                "Will presently appear;",
+                "The one in motley here,",
+                "The other found out there."
+            ],
+            quoteLearAuthor: "(1.4.138-145)"
         }
     ]
 }
