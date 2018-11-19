@@ -14,6 +14,10 @@ class CommentatorPage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        window.scrollTo({top: 0, behavior: "smooth"})
+    }
+
     componentDidUpdate() {
         if (this.state.isAnimated) {
             console.log("Is animated");
@@ -29,7 +33,12 @@ class CommentatorPage extends React.Component {
     render() {
         console.log(this.state.isAnimated);
         return <div className="commentator-page">
-            {this.props.navigationBar}
+            <div style={{
+                opacity: this.state.isAnimated ? 1 : 0,
+                transition: "all 0.5s ease"
+            }}>
+                {this.props.navigationBar}
+            </div>
             <Transition in={!this.state.isAnimated} timeout={4000}>
                 {(state) => {
                     return <CommentatorSplashPage 

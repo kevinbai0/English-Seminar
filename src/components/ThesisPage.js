@@ -97,9 +97,9 @@ class ThesisPage extends React.Component {
         }} ref={this.props.reference}>
             <div className="caption" ref={this.captionRef}><span className="emphasis">Both</span><span> characters provide the same function in </span><span className="emphasis">both</span><span> plays.</span></div>
             <div className="prongs-container" ref={this.prongsContainerRef}>
-                <div className="prong" ref={this.consulterProngRef}><Link to={{pathname:"/consulters", state: {shouldUpdate: true }}}>The <span className="emphasis">Consulter</span></Link></div>
-                <div className="prong" ref={this.mediatorProngRef}><Link to={{pathname:"/mediators", state: {shouldUpdate: true }}}>The <span className="emphasis">Mediator</span></Link></div>
-                <div className="prong" ref={this.commentatorProngRef}><Link to={{pathname:"/commentators", state: {shouldUpdate: true }}}>The <span className="emphasis">Commentator</span></Link></div>
+                <Link to={{pathname:"/seminar/consulters", state: {shouldUpdate: true }}}><div className="prong prong1" ref={this.consulterProngRef}>The <span className="emphasis">Consulter</span></div></Link>
+                <Link to={{pathname:"/seminar/mediators", state: {shouldUpdate: true }}}><div className="prong prong2" ref={this.mediatorProngRef}>The <span className="emphasis">Mediator</span></div></Link>
+                <Link to={{pathname:"/seminar/commentators", state: {shouldUpdate: true }}}><div className="prong prong3" ref={this.commentatorProngRef}>The <span className="emphasis">Commentator</span></div></Link>
             </div>
         </div>
     }

@@ -148,6 +148,9 @@
   transform: translateX(-50%);
 }
 .evidence-page .evidence-container {
+  transition: all 0.5s ease;
+  opacity: 1;
+  visibility: visible;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -155,6 +158,7 @@
   top: 0;
 }
 .evidence-page .subprong-container {
+  transition: all 0.5s ease;
   background-color: white;
   display: grid;
   justify-items: center;
@@ -164,6 +168,9 @@
 .evidence-page .subprong-container .subprong-title {
   font-size: 10vw;
   font-weight: 900;
+}
+.evidence-page .quote-container {
+  transition: all 0.5s ease;
 }
 .evidence-page .quote-container .quote-symbol {
   position: absolute;
@@ -218,6 +225,7 @@
   top: 0;
   width: 100vw;
   height: 100vh;
+  transition: all 0.5s ease;
 }
 
 .evidence-page.exited {
@@ -526,7 +534,12 @@ nav .nav-items .nav-item.dark {
   align-items: center;
   z-index: 5;
 }
-.thesis-component .prongs-container .prong {
+.thesis-component .prongs-container a {
+  color: inherit;
+  text-decoration: inherit;
+  color: #333333;
+}
+.thesis-component .prongs-container a .prong {
   background-color: white;
   cursor: pointer;
   position: absolute;
@@ -539,23 +552,19 @@ nav .nav-items .nav-item.dark {
   width: 20vw;
   transition: all 0.5s ease;
 }
-.thesis-component .prongs-container .prong a {
-  color: inherit;
-  text-decoration: inherit;
-}
-.thesis-component .prongs-container .prong .emphasis {
+.thesis-component .prongs-container a .prong .emphasis {
   font-weight: 600;
 }
-.thesis-component .prongs-container .prong:nth-child(1) {
+.thesis-component .prongs-container .prong1 {
   top: 10vw;
   left: 5vw;
 }
-.thesis-component .prongs-container .prong:nth-child(2) {
+.thesis-component .prongs-container .prong2 {
   top: 10vw;
   left: 50vw;
   transform: translateX(-50%);
 }
-.thesis-component .prongs-container .prong:nth-child(3) {
+.thesis-component .prongs-container .prong3 {
   top: 10vw;
   right: 5vw;
 }
@@ -856,6 +865,10 @@ body {
   overflow-x: hidden;
   font-family: "Source Sans Pro", "sans-serif";
   font-weight: 400;
+}
+
+.splash-page {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

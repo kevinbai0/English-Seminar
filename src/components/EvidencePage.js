@@ -1,6 +1,7 @@
 import React from "react";
 import ScrollButton from "./ScrollButton";
 import ThesisPage from "./ThesisPage";
+import anime from "animejs";
 
 class EvidencePage extends React.Component {
     constructor(props) {
@@ -22,24 +23,41 @@ class EvidencePage extends React.Component {
             currentPage: currentPage+1 < count ? currentPage + 1 : currentPage
         })
     }
-
     componentDidUpdate() {
         let counter = 0;
-        for (let i = this.state.currentPage; i >= 0; i--) {
+        /*for (let i = this.state.currentPage; i >= 0; i--) {
             this.pageRefs[i].current.style.zIndex=100 - counter++;
             this.pageRefs[i].current.style.height="100vh";
         }
         for (let i = this.state.count; i > this.state.count; i--) {
             this.pageRefs[i].current.style.zIndex=100-counter++;
             this.pageRefs[i].current.style.height="100vh";
+        }*/
+        for (let i = 0; i < this.state.count ; i++) {
+            this.pageRefs[i].current.style.zIndex = 100-i;
         }
+
+        let affected = this.pageRefs.filter((val, i) => i < this.state.currentPage).map((val) => val.current);
+        anime({
+            targets: affected,
+            opacity: 0,
+            duration: 2000,
+            easing: "easeInOutQuad",
+            complete: () => {
+                affected.forEach((element) => {
+                    element.style.visibility="hidden"
+                })
+            }
+        })
+        
+        
     }
 
     render() {
         let {subprongs} = this.props;
         console.log(this.props.state);
         return <div className={"evidence-page " + this.props.state}>
-            <div className="evidence-landing" ref={this.pageRefs[0]}>
+            <div className="evidence-landing evidence-container" ref={this.pageRefs[0]}>
                 <div className="evidence-title">Evidence</div>
                 <ScrollButton onClick={() => this.transitionPage(0)}/>
             </div>

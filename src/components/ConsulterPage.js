@@ -13,6 +13,9 @@ class ConsulterPage extends React.Component {
             isAnimated: false
         }
     }
+    componentDidMount() {
+        window.scrollTo({top: 0, behavior: "smooth"})
+    }
 
     componentDidUpdate() {
         if (this.state.isAnimated) {
@@ -29,7 +32,12 @@ class ConsulterPage extends React.Component {
     render() {
         console.log(this.state.isAnimated);
         return <div className="commentator-page">
-            {this.props.navigationBar}
+            <div style={{
+                opacity: this.state.isAnimated ? 1 : 0,
+                transition: "all 0.5s ease"
+            }}>
+                {this.props.navigationBar}
+            </div>
             <Transition in={!this.state.isAnimated} timeout={4000}>
                 {(state) => {
                     return <ConsulterSplashPage 
@@ -50,7 +58,6 @@ class ConsulterPage extends React.Component {
         this.setState({
             isAnimated: true
         })
-        console.log("Finished");
     }
 }
 

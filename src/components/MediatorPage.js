@@ -14,6 +14,10 @@ class MediatorPage extends React.Component {
         }
     }
 
+    componentDidMount() {
+        window.scrollTo({top: 0, behavior: "smooth"})
+    }
+
     componentDidUpdate() {
         if (this.state.isAnimated) {
             console.log("Is animated");
@@ -27,8 +31,13 @@ class MediatorPage extends React.Component {
         }
     }
     render() {
-        return <div className="commentator-page">
-            {this.props.navigationBar}
+        return <div className="mediator-page">
+            <div style={{
+                opacity: this.state.isAnimated ? 1 : 0,
+                transition: "all 0.5s ease"
+            }}>
+                {this.props.navigationBar}
+            </div>
             <Transition in={!this.state.isAnimated} timeout={4000}>
                 {(state) => {
                     return <MediatorSplashPage 

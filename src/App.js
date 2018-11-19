@@ -35,15 +35,15 @@ class App extends React.Component {
                             />
                         </div>
                 } />
-                <Route exact path="/commentators" component={
+                <Route exact path="/seminar/commentators" component={
                     () => 
                         <CommentatorPage navigationBar={this.getNavBar(3, false)} />   
                 }/>
-                <Route exact path="/mediators" component={
+                <Route exact path="/seminar/mediators" component={
                     () => 
                         <MediatorPage navigationBar={this.getNavBar(2, false)} />   
                 }/>
-                <Route exact path="/consulters" component={
+                <Route exact path="/seminar/consulters" component={
                     () => 
                         <ConsulterPage navigationBar={this.getNavBar(2, false)} />   
                 }/>
@@ -73,9 +73,9 @@ class App extends React.Component {
 
     navItems = [
 		{name: "Home", link: "/"}, 
-		{name: "The Consulters", link: "/consulters"}, 
-		{name: "The Mediators", link: "/mediators"}, 
-		{name: "The Commentators", link: "/commentators"},
+		{name: "The Consulters", link: "/seminar/consulters"}, 
+		{name: "The Mediators", link: "/seminar/mediators"}, 
+		{name: "The Commentators", link: "/seminar/commentators"},
 	]
 	getNavBar = (i, light) => {
 		return <NavigationBar

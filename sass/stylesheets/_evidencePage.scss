@@ -32,6 +32,9 @@
         transform: translateX(-50%);
     }
     .evidence-container {
+        transition: all 0.5s ease;
+        opacity: 1;
+        visibility: visible;
         position: absolute;
         width: 100vw;
         height: 100vh;
@@ -39,6 +42,7 @@
         top: 0;
     }
     .subprong-container {
+        transition: all 0.5s ease;
         background-color: white;
         display: grid;
         justify-items: center;
@@ -50,6 +54,7 @@
         }
     }
     .quote-container {
+        transition: all 0.5s ease;
         .quote-symbol {
             position: absolute;
             left: 50%;
@@ -104,6 +109,7 @@
         top: 0;
         width: 100vw;
         height: 100vh;
+        transition: all 0.5s ease;
     }
 }
 

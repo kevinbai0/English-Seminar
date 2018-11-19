@@ -24,13 +24,13 @@ class ConsulterSplashPage extends React.Component {
         if (this.props.state === "entered" && !this.props.isAnimated) {
             let animateAtOnce = true;
             let timeline = anime.timeline();
-            anime({
+            timeline.add({
                 targets: this.titleRef.current,
                 opacity: [0,1],
-                delay: 0,
-                duration: 1000
-            })
-            timeline.add({
+                translateY: [-200, 0],
+                duration: 3000,
+                offset: 0
+            }).add({
                 targets: this.alwaysSayRef.current,
                 scale: [0.1, 1],
                 translateX: [-window.innerWidth / 2, 0],
@@ -120,10 +120,6 @@ class ConsulterSplashPage extends React.Component {
                 duration: 3000,
                 offset: animateAtOnce ? 0 : "-=500"
             })
-
-            timeline.finished.then(() => {
-                this.animationsFinished();
-            })
         }
     }
     render = () => {
@@ -138,7 +134,7 @@ class ConsulterSplashPage extends React.Component {
             classNameExtension=" entering entered";
             // reposition elements
         }
-        return <div className="consulter-splash-page" ref={this.props.reference}>
+        return <div className="consulter-splash-page splash-page" onClick={this.animationsFinished.bind(this)}  ref={this.props.reference}>
             <div className={"consulter" + classNameExtension} ref={this.titleRef}>The <span className="emphasis">Consulter</span></div>
             <div className={"paradox-wise" + classNameExtension} ref={this.comicReliefRef}>Paradoxically Wise</div>
             <div className={"wise" + classNameExtension} ref={this.humorRef}>Wise</div>

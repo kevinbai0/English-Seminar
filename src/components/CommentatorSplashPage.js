@@ -23,13 +23,14 @@ class CommentatorSplashPage extends React.Component {
         if (this.props.state === "entered" && !this.props.isAnimated) {
             let animateAtOnce = true;
             let timeline = anime.timeline();
-            anime({
+
+            timeline.add({
                 targets: this.titleRef.current,
                 opacity: [0,1],
-                delay: 0,
-                duration: 1000
-            })
-            timeline.add({
+                translateY: [-200, 0],
+                duration: 3000,
+                offset: 0
+            }).add({
                 targets: this.alwaysSayRef.current,
                 scale: [0.1, 1],
                 translateX: [-window.innerWidth / 2, 0],
@@ -106,10 +107,6 @@ class CommentatorSplashPage extends React.Component {
                 offset: animateAtOnce ? 0 : "-=2000",
                 easing: "easeInOutQuad",
             })
-
-            timeline.finished.then(() => {
-                this.animationsFinished();
-            })
         }
     }
     render = () => {
@@ -124,7 +121,7 @@ class CommentatorSplashPage extends React.Component {
             classNameExtension=" entering entered";
             // reposition elements
         }
-        return <div className="commentator-splash-page" ref={this.props.reference}>
+        return <div className="commentator-splash-page splash-page" onClick={this.animationsFinished.bind(this)} ref={this.props.reference}>
             <div className={"commentator" + classNameExtension} ref={this.titleRef}>The <span className="emphasis">Commentator</span></div>
             <div className={"comic-relief" + classNameExtension} ref={this.comicReliefRef}>Comic Relief</div>
             <div className={"humor" + classNameExtension} ref={this.humorRef}>Humor</div>

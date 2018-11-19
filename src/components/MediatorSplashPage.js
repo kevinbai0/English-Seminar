@@ -25,13 +25,14 @@ class MediatorSplashPage extends React.Component {
         if (this.props.state === "entered" && !this.props.isAnimated) {
             let animateAtOnce = true;
             let timeline = anime.timeline();
-            anime({
+            
+            timeline.add({
                 targets: this.titleRef.current,
                 opacity: [0,1],
-                delay: 0,
-                duration: 1000
-            })
-            timeline.add({
+                translateY: [-200, 0],
+                duration: 3000,
+                offset: 0
+            }).add({
                 targets: this.alwaysSayRef.current,
                 scale: [0.1, 1],
                 translateX: [-window.innerWidth / 2, 0],
@@ -122,10 +123,6 @@ class MediatorSplashPage extends React.Component {
                 offset: animateAtOnce ? 0 : "-=2000",
                 easing: "easeInOutQuad",
             })
-
-            timeline.finished.then(() => {
-                this.animationsFinished();
-            })
         }
     }
     render = () => {
@@ -140,7 +137,7 @@ class MediatorSplashPage extends React.Component {
             classNameExtension=" entering entered";
             // reposition elements
         }
-        return <div className="mediator-splash-page" ref={this.props.reference}>
+        return <div className="mediator-splash-page splash-page" onClick={this.animationsFinished.bind(this)}  ref={this.props.reference}>
             <div className={"mediator" + classNameExtension} ref={this.titleRef}>The <span className="emphasis">Mediator</span></div>
             <div className={"middleman" + classNameExtension} ref={this.comicReliefRef}>Middle Man</div>
             <div className={"peace-maker" + classNameExtension} ref={this.humorRef}>Peace Maker</div>
