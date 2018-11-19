@@ -8,6 +8,8 @@ import {Transition} from "react-transition-group";
 import NavigationBar from "./components/NavigationBar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Water from "./water";
+import MediatorPage from "./components/MediatorPage";
+import ConsulterPage from "./components/ConsulterPage";
 
 class App extends React.Component { 
     constructor(props) {
@@ -17,37 +19,6 @@ class App extends React.Component {
             firstUpdate: true,
             scrollState: "noscroll",
             showingEvidence: false
-        }
-        this.water = new Water();
-        this.water.onScroll = this.handleScroll.bind(this);
-        this.landingRefs = {
-            title: React.createRef(),
-            subtitle: React.createRef(),
-            presentButton: React.createRef()
-        }
-        this.water.add({
-            target: this.landingRefs.title,
-            keyframes: {
-                opacity: [1,0.37],
-                translateY: [0, window.innerHeight / 2]
-            }
-        }).add({
-            target: this.landingRefs.subtitle,
-            keyframes: {
-                opacity: [0.37, 1],
-                translateY: [0, window.innerHeight * 3/4]
-            }
-        })
-    }
-    componentDidMount() {
-        this.water.mount();
-    }
-    componentWillUnmount() {
-        this.water.unmount();
-    }
-    componentDidUpdate() {
-        if (this.state.currentProng === "Commentator" && this.state.firstUpdate) {
-            window.scroll({top: window.innerHeight, behavior: "smooth"});
         }
     }
     render = () => {
@@ -61,19 +32,20 @@ class App extends React.Component {
                                 navigationBar={this.getNavBar(0, true)}
                                 updateScrollState={(value) => this.updateScrollState(value)}
                                 beganScrolling={this.state.scrollState !== "noscroll"}
-                                refs={this.landingRefs}
-                            />
-                            <ThesisPage 
-                                onChooseProng={(prong) => this.onChooseProng(prong)} 
-                                currentProng={this.state.currentProng} 
-                                scrollState={this.state.scrollState} 
-                                thesisTransition={this.thesisTransition.bind(this)}
                             />
                         </div>
                 } />
                 <Route exact path="/commentators" component={
                     () => 
-                        <CommentatorPage navigationBar={this.getNavBar(3, true)} />   
+                        <CommentatorPage navigationBar={this.getNavBar(3, false)} />   
+                }/>
+                <Route exact path="/mediators" component={
+                    () => 
+                        <MediatorPage navigationBar={this.getNavBar(2, false)} />   
+                }/>
+                <Route exact path="/consulters" component={
+                    () => 
+                        <ConsulterPage navigationBar={this.getNavBar(2, false)} />   
                 }/>
             </div>
             {/*
@@ -97,59 +69,6 @@ class App extends React.Component {
 
         </Router>
         
-    }
-    prevScrollPos = 0;
-    handleScroll(event) {
-        // scrolling down
-        if (this.prevScrollPos < window.pageYOffset) {
-            if (this.state.scrollState === "noscroll") {
-                this.setState({
-                    scrollState: "scrolling"
-                })
-            }
-            else if (this.state.scrollState === "scrolling" && window.pageYOffset >= window.innerHeight * 2 / 3) {
-                this.setState({
-                    scrollState: "scrolled"
-                })
-            }
-        }
-        // scrolling up
-        else {
-            if (this.state.scrollState === "scrolled" && window.pageYOffset <= 10) {
-                this.setState({
-                    scrollState: "scrolling"
-                })
-            }
-            else if (this.state.scrollState === "scrolling" && window.pageYOffset <= 5) {
-                this.setState({
-                    scrollState: "noscroll"
-                })
-            }
-        }
-        
-        this.prevScrollPos = window.pageYOffset;
-    }
-    updateScrollState = (value) => {
-        if (this.state.scrollState === value) return;
-        this.setState({
-            scrollState: value
-        })
-    }
-
-    thesisTransition() {
-        this.setState({
-            showingEvidence: true
-        })
-    }
-    
-    onChooseProng = (prong) => {
-        this.setState({
-            currentProng: prong
-        }, () => {
-            this.setState({
-                firstUpdate: false
-            })
-        })
     }
 
     navItems = [

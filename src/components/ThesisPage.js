@@ -1,8 +1,6 @@
 import React from "react";
 import anime from "animejs";
-import { Transition } from "react-transition-group";
 
-import CommentatorSplashPage from "./CommentatorSplashPage";
 import { Link } from "react-router-dom";
 
 class ThesisPage extends React.Component {
@@ -89,8 +87,6 @@ class ThesisPage extends React.Component {
                 opacity: [1,0],
                 duration: 0,
             })
-
-            timeline.finished.then(this.props.thesisTransition);
             
             return;
         }
@@ -98,7 +94,7 @@ class ThesisPage extends React.Component {
     render = () => {
         return <div className="thesis-component" style={{
             height: this.props.currentProng ? "100vh" : "auto"
-        }}>
+        }} ref={this.props.reference}>
             <div className="caption" ref={this.captionRef}><span className="emphasis">Both</span><span> characters provide the same function in </span><span className="emphasis">both</span><span> plays.</span></div>
             <div className="prongs-container" ref={this.prongsContainerRef}>
                 <div className="prong" ref={this.consulterProngRef}><Link to={{pathname:"/consulters", state: {shouldUpdate: true }}}>The <span className="emphasis">Consulter</span></Link></div>

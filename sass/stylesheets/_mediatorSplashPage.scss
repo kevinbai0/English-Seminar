@@ -1,0 +1,142 @@
+@import "../definitions.scss";
+.mediator-splash-page {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: $displayFont;
+    .hidden {
+        opacity: 0;
+        display: none;
+    }
+    .entering {
+        opacity: 0;
+    }
+    .entering.entered {
+        opacity: 1;
+    }
+    .mediator {
+        position: absolute;
+        left: 9.74vw;
+        top: 1.1vw;
+        font-size: 6.38vw;
+        font-weight: 400;
+        color: #FD6B6B;
+        .emphasis {
+            font-weight: 600;
+        }
+    }
+    .middleman {
+        position: absolute;
+        left: -19vw;
+        top: 20vw;
+        transform: rotate(90deg);
+        font-weight: 500;
+        font-size: 10vw;
+        color: #333333;
+    }
+    .peace-maker {
+        position: absolute;
+        width: 25vw;
+        color: #888888;
+        font-weight: 500;
+        font-size: 9vw;
+        left: 16vw;
+        top: 6vw;
+        line-height: 1.5;
+    }
+    .speaks-truth {
+        position: absolute;
+        left: 16vw;
+        top: 18vw;
+        font-size: 3vw;
+        font-weight: 900;
+        color: #333;
+        white-space: nowrap;
+    }
+    .in-between {
+        position: absolute;
+        left: 12vw;
+        top: 31vw;
+        font-size: 7.5vw;
+        font-weight: 200;
+        color: #333333;
+        line-height: 1.5;
+    }
+    .voice-of-society {
+        position: absolute;
+        left: 12vw;
+        top: 41vw;
+        font-size: 10vw;
+        font-weight: 900;
+        color: #333333;
+        white-space: nowrap;
+    }
+    .bridge {
+        position: absolute;
+        left: 34vw;
+        top: 11vw;
+        font-size: 11vw;
+        font-weight: 900;
+        color: #333;
+    }
+    .different-views {
+        position: absolute;
+        left: 57vw;
+        top: 2vw;
+        font-weight: 700;
+        font-size: 6vw;
+        text-align: right;
+        color: #777;
+        line-height: 1;
+        white-space: nowrap;
+    }
+    .introduce {
+        position: absolute;
+        left: 57vw;
+        top: 15vw;
+        transform: rotate(-90deg);
+        font-weight: 500;
+        font-size: 10vw;
+        color: #333;
+    }
+    .knowledgable {
+        position: absolute;
+        left: 52vw;
+        top: 28vw;
+        font-weight: 900;
+        font-size: 6vw;
+        width: 80vw;
+        color: #333333;
+    }
+    .speak-cant {
+        position: absolute;
+        left: 56vw;
+        top: 28vw;
+        font-weight: 900;
+        font-size: 4vw;
+        width: 80vw;
+        color: #787878;
+    }
+    .open-up {
+        position: absolute;
+        left: 60vw;
+        top: 33vw;
+        font-weight: 900;
+        font-size: 3.3vw;
+        width: 80vw;
+        color: #333;
+    }
+    .link-between {
+        position: absolute;
+        text-align: right;
+        left: 21vw;
+        top: 33vw;
+        font-weight: 400;
+        font-size: 4vw;
+        width: 80vw;
+        color: #333;
+    }
+}

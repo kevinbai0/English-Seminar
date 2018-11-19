@@ -1,11 +1,11 @@
 import React from "react";
 import {Transition} from "react-transition-group";
-import CommentatorSplashPage from "./CommentatorSplashPage";
 import anime from "animejs";
 import EvidencePage from "./EvidencePage";
 import data from "../js/data";
-import ThesisPage from "./ThesisPage";
-class CommentatorPage extends React.Component {
+import ConsulterSplashPage from "./ConsulterSplashPage";
+
+class ConsulterPage extends React.Component {
     constructor(props) {
         super(props);
         this.commentatorSplashRef = React.createRef();
@@ -32,7 +32,7 @@ class CommentatorPage extends React.Component {
             {this.props.navigationBar}
             <Transition in={!this.state.isAnimated} timeout={4000}>
                 {(state) => {
-                    return <CommentatorSplashPage 
+                    return <ConsulterSplashPage 
                         state={state}
                         shouldAnimate={!this.state.isAnimated}
                         animationsFinished={this.animationsFinished.bind(this)} 
@@ -41,7 +41,7 @@ class CommentatorPage extends React.Component {
                 }}
             </Transition>
             <Transition in={this.state.isAnimated} timeout={4000}>
-                {(state) => <EvidencePage subprongs={data.Commentator} state={state}/>}
+                {(state) => <EvidencePage subprongs={data.Consulter} state={state}/>}
             </Transition>
         </div>
     }
@@ -54,4 +54,4 @@ class CommentatorPage extends React.Component {
     }
 }
 
-export default CommentatorPage;
+export default ConsulterPage;

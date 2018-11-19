@@ -1,11 +1,12 @@
 import React from "react";
 import ScrollButton from "./ScrollButton";
+import ThesisPage from "./ThesisPage";
 
 class EvidencePage extends React.Component {
     constructor(props) {
         super(props);
         this.pageRefs = [];
-        let count = props.subprongs.length * 3 + 1;
+        let count = props.subprongs.length * 3 + 2;
         for (let i = 0; i < count; i++) {
             this.pageRefs.push(React.createRef());
         }
@@ -17,7 +18,6 @@ class EvidencePage extends React.Component {
 
     transitionPage(index) {
         let {count, currentPage} = this.state;
-        console.log((currentPage + 1) + " " + count);
         this.setState({
             currentPage: currentPage+1 < count ? currentPage + 1 : currentPage
         })
@@ -27,9 +27,11 @@ class EvidencePage extends React.Component {
         let counter = 0;
         for (let i = this.state.currentPage; i >= 0; i--) {
             this.pageRefs[i].current.style.zIndex=100 - counter++;
+            this.pageRefs[i].current.style.height="100vh";
         }
         for (let i = this.state.count; i > this.state.count; i--) {
             this.pageRefs[i].current.style.zIndex=100-counter++;
+            this.pageRefs[i].current.style.height="100vh";
         }
     }
 
@@ -73,6 +75,7 @@ class EvidencePage extends React.Component {
                     </div>
                 })
             }
+            <ThesisPage reference={this.pageRefs[this.state.count - 1]}/>
         </div>
     }
 }

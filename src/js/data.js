@@ -1,5 +1,5 @@
 let data = {
-    "Consultor": [
+    "Consulter": [
         {
             title: "Subprong 1",
             quoteOedipus: "Quote here",
@@ -23,29 +23,27 @@ let data = {
         }
     ],
     "Mediator": [
-        [
-            {
-                title: "Subprong 1",
-                quoteOedipus: "Quote here",
-                quoteOedipusAuthor: "(Sophocles #)",
-                quoteLear: "Lear quote",
-                quoteLearAuthor: "(Act.Scene.Lines)"
-            },
-            {
-                title: "Subprong 2",
-                quoteOedipus: "Quote here",
-                quoteOedipusAuthor: "(Sophocles #)",
-                quoteLear: "Lear quote",
-                quoteLearAuthor: "(Act.Scene.Lines)"
-            },
-            {
-                title: "Subprong 3",
-                quoteOedipus: "Quote here",
-                quoteOedipusAuthor: "(Sophocles #)",
-                quoteLear: "Lear quote",
-                quoteLearAuthor: "(Act.Scene.Lines)"
-            }
-        ]
+        {
+            title: "Subprong 1",
+            quoteOedipus: "Quote here",
+            quoteOedipusAuthor: "(Sophocles #)",
+            quoteLear: "Lear quote",
+            quoteLearAuthor: "(Act.Scene.Lines)"
+        },
+        {
+            title: "Subprong 2",
+            quoteOedipus: "Quote here",
+            quoteOedipusAuthor: "(Sophocles #)",
+            quoteLear: "Lear quote",
+            quoteLearAuthor: "(Act.Scene.Lines)"
+        },
+        {
+            title: "Subprong 3",
+            quoteOedipus: "Quote here",
+            quoteOedipusAuthor: "(Sophocles #)",
+            quoteLear: "Lear quote",
+            quoteLearAuthor: "(Act.Scene.Lines)"
+        }
     ],
     "Commentator": [
         {
