@@ -1,0 +1,111 @@
+@import "../definitions.scss";
+
+.evidence-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: all 4s ease;
+    .evidence-landing {
+        width: 100vw;
+        height: 100vh;
+        background-color: #333333;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 20;
+        .evidence-title {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 10vw;
+            font-weight: 900;
+        }
+    }
+    .scroll-button {
+        position: absolute;
+        left: 50%;
+        bottom: 3vw;
+        transform: translateX(-50%);
+    }
+    .evidence-container {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: 0;
+    }
+    .subprong-container {
+        background-color: white;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+        .subprong-title {
+            font-size: 10vw;
+            font-weight: 900;
+        }
+    }
+    .quote-container {
+        .quote-symbol {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 5vw;
+            font-family: "Nunito";
+            font-weight: 900;
+            font-size: 20vw;
+            align-self: end;
+        }
+        .quote-lines {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            .inline-quote {
+                display: flex;
+                width: 80%;
+                .rectangle {
+                    margin: 0 2vw 0 0;
+                    background-color: #333333;
+                    width: 4px;
+                    height: inherit;
+                }
+                .quote-content {
+                    font-size: 3vw;
+                    font-weight: 300;
+                    font-style: italic;
+                }
+            }
+            .quote-author {
+                font-size: 3vw;
+                font-weight: 300;
+                text-align: right;
+            }
+        }
+    }
+    .quote-container.blue {
+        color: #333333;
+        background: linear-gradient(135deg, #84FAB0, #8FD3F4);
+    }
+    .quote-container.red {
+        .rectangle {
+            background-color: white;
+        }
+        background: linear-gradient(135deg, #FC6076, #FF9A44);
+        color: white;
+    }
+}
+
+.evidence-page.exited {
+    opacity: 0;
+    visibility: hidden;
+}
+.evidence-page.entered {
+    opacity: 1;
+    visibility: show;
+}

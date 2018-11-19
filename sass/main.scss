@@ -1,0 +1,16 @@
+@import "./definitions.scss";
+@import "./stylesheets/commentatorPage";
+@import "./stylesheets/commentatorSplashPage";
+@import "./stylesheets/evidencePage";
+@import "./stylesheets/landingStyle";
+@import "./stylesheets/navigationBar";
+@import "./stylesheets/scrollButtonStyle";
+@import "./stylesheets/thesisStyle";
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: $bodyFont, "sans-serif";
+    font-weight: 400;
+}

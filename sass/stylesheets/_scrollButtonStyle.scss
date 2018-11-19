@@ -1,0 +1,39 @@
+.scroll-button {
+    width: 3vw;
+    height: 7vw;
+    border-radius: 3vw;
+    border: 2px solid white;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.5s ease;
+    padding: 0.5vw;
+    cursor: pointer;
+    visibility: visible;
+    .ball {
+        background-color: white;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+.scroll-button.dark {
+    border: 2px solid #333333;
+    .ball {
+        background-color: #333333;
+    }
+}
+.scroll-button:hover {
+    opacity: 0.7;
+}
+.scroll-button.entering, .scroll-button.entered {
+    visibility: visible;
+    opacity: 1;
+}
+.scroll-button.exiting, .scroll-button.exited {
+    visibility: hidden;
+    opacity: 0;
+}
