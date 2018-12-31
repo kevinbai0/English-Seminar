@@ -5,6 +5,8 @@ import anime from "animejs";
 import EvidencePage from "./EvidencePage";
 import data from "../js/data";
 import ThesisPage from "./ThesisPage";
+import seminarStyle from "../style";
+import NavigationBar from "./NavigationBar";
 class CommentatorPage extends React.Component {
     constructor(props) {
         super(props);
@@ -33,11 +35,12 @@ class CommentatorPage extends React.Component {
     render() {
         console.log(this.state.isAnimated);
         return <div className="commentator-page">
+            {seminarStyle}
             <div style={{
                 opacity: this.state.isAnimated ? 1 : 0,
                 transition: "all 0.5s ease"
             }}>
-                {this.props.navigationBar}
+            {this.props.navigationBar}
             </div>
             <Transition in={!this.state.isAnimated} timeout={4000}>
                 {(state) => {

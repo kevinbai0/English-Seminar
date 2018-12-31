@@ -11,6 +11,7 @@ class VideoModal extends React.Component {
             showVideo: false,
             isEnding: false,
         }
+        this.windowHeight = 720;
     }
     componentDidUpdate() {
         if (this.state.isPlaying && !this.state.showVideo) {
@@ -50,12 +51,16 @@ class VideoModal extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.windowHeight = window.innerHeight;
+    }
+
     render() {
         return <div className={!this.props.shouldShow ? "video-modal small" : "video-modal"} onClick={this.handleClick.bind(this)} ref={this.containerRef}>
             <video 
                 ref={this.videoRef} 
-                width={window.innerHeight * 720/420} 
-                className={!this.state.showVideo ? "video hidden" : "video"} height={window.innerHeight}  
+                width={this.windowHeight * 720/420} 
+                className={!this.state.showVideo ? "video hidden" : "video"} height={this.windowHeight}  
                 style={{
                     position: "absolute", top: "0", left: 0
                 }

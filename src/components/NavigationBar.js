@@ -1,9 +1,9 @@
 import React , { Component } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const NavItem = (props) => {
 	return <div className={props.className}>
-		<Link to={props.link}>{props.title}</Link>
+		<Link href={props.link}><a>{props.title}</a></Link>
 	</div>
 }
 
@@ -11,11 +11,14 @@ class NavigationBar extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			width: window.innerWidth
+			width: 1920
 		}
 	}
 	componentDidMount() {
 		window.addEventListener("resize", this.resizeListener);
+		this.setState({
+			width: window.innerWidth
+		})
 	}
 	componentWillUnmount() {
 		window.removeEventListener("resize", this.resizeListener);
@@ -27,6 +30,7 @@ class NavigationBar extends Component {
 		})
 	}
 	render() {
+		console.log(this.props);
 		if (this.state.width >= 800) {
 			return <nav>
 				<div className="nav-items">
@@ -82,7 +86,7 @@ class HamburgerNavigation extends Component {
 				</div>
 				<div className={"mobile-nav-items-container " + classAddonNav}>
 					{this.props.navItems.map((navItem, i) => {
-						return <div key={i} className={classAddonItem}><Link to={navItem.link} onClick={(e) => this.toggleHamburger}>{navItem.name}</Link></div>
+						return <div key={i} className={classAddonItem}><Link href={navItem.link} onClick={(e) => this.toggleHamburger}><a>{navItem.name}</a></Link></div>
 					})}
 				</div>
 			</div>

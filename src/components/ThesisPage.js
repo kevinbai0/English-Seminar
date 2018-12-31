@@ -1,7 +1,7 @@
 import React from "react";
 import anime from "animejs";
 
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 class ThesisPage extends React.Component {
     constructor(props) {
@@ -97,9 +97,9 @@ class ThesisPage extends React.Component {
         }} ref={this.props.reference}>
             <div className="caption" ref={this.captionRef}><span className="emphasis">Both</span><span> characters provide the same function in </span><span className="emphasis">both</span><span> plays.</span></div>
             <div className="prongs-container" ref={this.prongsContainerRef}>
-                <Link to={{pathname:"/consulters", state: {shouldUpdate: true }}}><div className="prong prong1" ref={this.consulterProngRef}>The <span className="emphasis">Consulter</span></div></Link>
-                <Link to={{pathname:"/mediators", state: {shouldUpdate: true }}}><div className="prong prong2" ref={this.mediatorProngRef}>The <span className="emphasis">Mediator</span></div></Link>
-                <Link to={{pathname:"/commentators", state: {shouldUpdate: true }}}><div className="prong prong3" ref={this.commentatorProngRef}>The <span className="emphasis">Commentator</span></div></Link>
+                <Link href={{pathname:"/consulters", state: {shouldUpdate: true }}}><a><div className="prong prong1" ref={this.consulterProngRef}>The <span className="emphasis">Consulter</span></div></a></Link>
+                <Link href={{pathname:"/mediators", state: {shouldUpdate: true }}}><a><div className="prong prong2" ref={this.mediatorProngRef}>The <span className="emphasis">Mediator</span></div></a></Link>
+                <Link href="/commentators"><a><div className="prong prong3" ref={this.commentatorProngRef}>The <span className="emphasis">Commentator</span></div></a></Link>
             </div>
         </div>
     }

@@ -4,6 +4,7 @@ import MediatorSplashPage from "./MediatorSplashPage";
 import anime from "animejs";
 import EvidencePage from "./EvidencePage";
 import data from "../js/data";
+import seminarStyle from "../style";
 
 class MediatorPage extends React.Component {
     constructor(props) {
@@ -32,6 +33,7 @@ class MediatorPage extends React.Component {
     }
     render() {
         return <div className="mediator-page">
+            {seminarStyle}
             <div style={{
                 opacity: this.state.isAnimated ? 1 : 0,
                 transition: "all 0.5s ease"

@@ -4,6 +4,7 @@ import anime from "animejs";
 import EvidencePage from "./EvidencePage";
 import data from "../js/data";
 import ConsulterSplashPage from "./ConsulterSplashPage";
+import seminarStyle from "../style";
 
 class ConsulterPage extends React.Component {
     constructor(props) {
@@ -30,8 +31,8 @@ class ConsulterPage extends React.Component {
         }
     }
     render() {
-        console.log(this.state.isAnimated);
         return <div className="commentator-page">
+            {seminarStyle}
             <div style={{
                 opacity: this.state.isAnimated ? 1 : 0,
                 transition: "all 0.5s ease"
